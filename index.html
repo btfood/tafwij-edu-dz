@@ -3,91 +3,56 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ثانوية بسجراري لخضر بوفاطيس | الموقع الرسمي</title>
-    <meta name="description" content="الموقع الرسمي لثانوية بسجراري لخضر بوفاطيس. فضاء التلاميذ، فضاء الأولياء، والإعلانات الإدارية.">
-    <link rel="stylesheet" href="assets/css/main.css">
+    <title>TAFWIJ EDU DZ - PROFESSIONAL EDITION 2027</title>
+    <link rel="stylesheet" href="css/style.css">
+    <!-- Production Dependencies -->
+    <script src="https://cdn.jsdelivr.net/npm/xlsx/dist/xlsx.full.min.js" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js" defer></script>
 </head>
 <body>
-    
-    <!-- الشريط العلوي -->
-    <header class="site-header">
-        <div class="container header-inner">
-            <div class="logo">
-                <h1>ثانوية بسجراري لخضر</h1>
-                <span class="subtitle">بوفاطيس - وهران</span>
-            </div>
-            <nav class="main-nav" aria-label="الملاحة الرئيسية">
-                <ul>
-                    <li><a href="index.html" class="active">الرئيسية</a></li>
-                    <li><a href="news.html">الأخبار</a></li>
-                    <li><a href="student-space.html">فضاء التلاميذ</a></li>
-                    <li><a href="parent-space.html">فضاء الأولياء</a></li>
-                </ul>
-            </nav>
+    <header class="app-header">
+        <h1>TAFWIJ EDU DZ 2027</h1>
+        <div class="project-controls">
+            <button id="btnSaveProject">حفظ المشروع (JSON)</button>
+            <button id="btnLoadProject">استكمال العمل</button>
         </div>
     </header>
 
-    <main>
-        <!-- قسم الترحيب (Hero) -->
-        <section class="hero-section">
-            <div class="container hero-content">
-                <h2>التميز، الانضباط، والنجاح</h2>
-                <p>مرحباً بكم في البوابة الرسمية لثانوية بسجراري لخضر. منصة تعليمية حديثة تهدف لتسهيل التواصل بين الإدارة، التلاميذ، والأولياء.</p>
-                <div class="hero-actions">
-                    <a href="student-space.html" class="btn btn-primary">دخول التلاميذ</a>
-                    <a href="parent-space.html" class="btn btn-secondary">دخول الأولياء</a>
-                </div>
+    <main class="step-container">
+        <!-- 1: رفع الملف -->
+        <section id="step-1" class="step active">
+            <h2>1. رفع وتحليل الملفات</h2>
+            <input type="file" id="fileUploader" accept=".html,.mht,.xls,.xlsx,.csv,.txt" multiple>
+            <div id="dropZone" class="drop-zone">اسحب وأفلت ملفات الرقمنة هنا</div>
+        </section>
+
+        <!-- باقي الخطوات (تظهر تباعاً عبر JavaScript) -->
+        <section id="step-stats" class="step hidden">
+            <h2>الإحصائيات الشاملة</h2>
+            <div id="statisticsGrid" class="stats-grid"></div>
+            <button id="btnProposeClasses">اقتراح الأقسام</button>
+        </section>
+
+        <section id="step-editor" class="step hidden">
+            <h2>التعديل اليدوي ونظام القفل (Lock System)</h2>
+            <div id="manualEditorUI"></div>
+            <div class="editor-controls">
+                <button id="btnUndo">تراجع (Undo)</button>
+                <button id="btnRedo">إعادة (Redo)</button>
+                <button id="btnReoptimize">إعادة التحسين 10000x</button>
             </div>
         </section>
 
-        <!-- قسم آخر الأخبار -->
-        <section class="section-padding container">
-            <div class="section-title-wrapper">
-                <h3 class="section-title">آخر الإعلانات الإدارية</h3>
-            </div>
-            <div class="grid-cards">
-                
-                <!-- بطاقة خبر 1 -->
-                <article class="card">
-                    <span class="card-date">12 جويلية 2026</span>
-                    <h4>نتائج الفصل الثالث</h4>
-                    <p>نعلمكم أن نتائج الفصل الثالث والأخير للسنة الدراسية الحالية متاحة الآن للمعاينة عبر فضاء الأولياء.</p>
-                    <a href="news.html" class="read-more">التفاصيل &larr;</a>
-                </article>
-
-                <!-- بطاقة خبر 2 -->
-                <article class="card">
-                    <span class="card-date">10 جويلية 2026</span>
-                    <h4>التسجيلات المدرسية</h4>
-                    <p>انطلاق عملية التسجيل للسنة الدراسية القادمة. يرجى تحميل الاستمارات الرسمية من قسم الوثائق الإدارية.</p>
-                    <a href="documents.html" class="read-more">تحميل الوثائق &larr;</a>
-                </article>
-
+        <section id="step-export" class="step hidden">
+            <h2>تصدير النتائج</h2>
+            <div class="export-options">
+                <button data-type="excel">تصدير Excel</button>
+                <button data-type="pdf">تصدير PDF</button>
+                <button data-type="html">تصدير HTML</button>
             </div>
         </section>
     </main>
 
-    <!-- الفوتر -->
-    <footer class="site-footer">
-        <div class="container footer-grid">
-            <div class="footer-about">
-                <h4>عن المؤسسة</h4>
-                <p>مؤسسة تربوية حكومية تسعى لتوفير بيئة تعليمية آمنة ومحفزة لبناء جيل واعٍ ومثقف.</p>
-            </div>
-            <div class="footer-links">
-                <h4>روابط سريعة</h4>
-                <ul>
-                    <li><a href="documents.html">الوثائق الإدارية</a></li>
-                    <li><a href="contact.html">اتصل بنا</a></li>
-                    <li><a href="admin.html">لوحة التحكم (الإدارة)</a></li>
-                </ul>
-            </div>
-        </div>
-        <div class="footer-bottom">
-            <p>&copy; <span id="current-year"></span> ثانوية بسجراري لخضر بوفاطيس. جميع الحقوق محفوظة.</p>
-        </div>
-    </footer>
-
-    <script src="assets/js/main.js"></script>
+    <script type="module" src="js/main.js"></script>
 </body>
 </html>
