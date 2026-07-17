@@ -1,0 +1,243 @@
+/* assets/css/main.css */
+
+:root {
+    /* الألوان الرسمية للثانوية (مستوحاة من الجامعات الحديثة) */
+    --color-primary: #0F2C59;       /* أزرق داكن رسمي */
+    --color-accent: #C5A880;        /* ذهبي هادئ وأنيق */
+    --color-bg-body: #F8FAFC;       /* خلفية رمادية فاتحة جداً لراحة العين */
+    --color-bg-surface: #FFFFFF;    /* لون أبيض ناصع للبطاقات */
+    --color-text-main: #1E293B;     /* لون نص رئيسي مقروء */
+    --color-text-muted: #64748B;    /* نص ثانوي */
+    --color-border: #E2E8F0;        /* حدود خفيفة */
+
+    /* القياسات والمسافات */
+    --radius-md: 12px;
+    --shadow-sm: 0 1px 3px rgba(0,0,0,0.05);
+    --shadow-md: 0 4px 6px -1px rgba(0,0,0,0.05);
+    --transition: 200ms ease;
+    --font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--font-family);
+    background-color: var(--color-bg-body);
+    color: var(--color-text-main);
+    line-height: 1.7;
+}
+
+a {
+    text-decoration: none;
+    color: var(--color-primary);
+    transition: color var(--transition);
+}
+
+ul {
+    list-style: none;
+}
+
+.container {
+    max-width: 1150px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* الشريط العلوي */
+.site-header {
+    background-color: var(--color-bg-surface);
+    border-bottom: 1px solid var(--color-border);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.header-inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 0;
+}
+
+.logo h1 {
+    font-size: 1.4rem;
+    color: var(--color-primary);
+}
+
+.logo .subtitle {
+    font-size: 0.85rem;
+    color: var(--color-accent);
+    font-weight: 600;
+}
+
+.main-nav ul {
+    display: flex;
+    gap: 25px;
+}
+
+.main-nav a {
+    font-weight: 600;
+    color: var(--color-text-main);
+}
+
+.main-nav a:hover, .main-nav a.active {
+    color: var(--color-accent);
+}
+
+/* قسم الترحيب */
+.hero-section {
+    background-color: var(--color-primary);
+    color: var(--color-bg-surface);
+    padding: 80px 0;
+    text-align: center;
+    border-bottom: 4px solid var(--color-accent);
+}
+
+.hero-content h2 {
+    font-size: 2.5rem;
+    margin-bottom: 15px;
+}
+
+.hero-content p {
+    font-size: 1.1rem;
+    color: #E2E8F0;
+    max-width: 600px;
+    margin: 0 auto 30px;
+}
+
+.hero-actions {
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+}
+
+/* الأزرار */
+.btn {
+    padding: 12px 25px;
+    border-radius: var(--radius-md);
+    font-weight: 600;
+    display: inline-block;
+    transition: all var(--transition);
+}
+
+.btn-primary {
+    background-color: var(--color-accent);
+    color: var(--color-primary);
+}
+
+.btn-primary:hover {
+    background-color: #d4b995;
+    transform: translateY(-2px);
+}
+
+.btn-secondary {
+    background-color: transparent;
+    border: 1px solid var(--color-accent);
+    color: var(--color-accent);
+}
+
+/* البطاقات والأقسام */
+.section-padding {
+    padding: 60px 20px;
+}
+
+.section-title {
+    font-size: 1.8rem;
+    color: var(--color-primary);
+    margin-bottom: 30px;
+}
+
+.grid-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+}
+
+.card {
+    background: var(--color-bg-surface);
+    padding: 30px;
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-sm);
+    border: 1px solid var(--color-border);
+    transition: transform var(--transition), box-shadow var(--transition);
+}
+
+.card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-md);
+}
+
+.card-date {
+    display: block;
+    font-size: 0.85rem;
+    color: var(--color-accent);
+    margin-bottom: 10px;
+    font-weight: bold;
+}
+
+.card h4 {
+    font-size: 1.2rem;
+    margin-bottom: 15px;
+}
+
+.read-more {
+    display: inline-block;
+    margin-top: 15px;
+    font-weight: 600;
+    font-size: 0.9rem;
+}
+
+/* الفوتر */
+.site-footer {
+    background-color: var(--color-primary);
+    color: var(--color-bg-surface);
+    padding: 50px 0 20px;
+    margin-top: 50px;
+}
+
+.footer-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 30px;
+    margin-bottom: 30px;
+}
+
+.footer-grid h4 {
+    color: var(--color-accent);
+    margin-bottom: 15px;
+}
+
+.footer-grid ul li {
+    margin-bottom: 10px;
+}
+
+.footer-grid ul a {
+    color: #E2E8F0;
+}
+
+.footer-bottom {
+    text-align: center;
+    border-top: 1px solid rgba(255,255,255,0.1);
+    padding-top: 20px;
+    font-size: 0.85rem;
+    color: #cbd5e1;
+}
+
+/* التجاوب مع شاشات الهواتف */
+@media (max-width: 768px) {
+    .header-inner {
+        flex-direction: column;
+        gap: 15px;
+    }
+    .main-nav ul {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+    .hero-actions {
+        flex-direction: column;
+    }
+}
